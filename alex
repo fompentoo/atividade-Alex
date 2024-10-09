@@ -1,0 +1,64 @@
+
+#Economia 
+def compound_interest(P, r, n, t):
+    A = P * (1 + r/n)**(n*t)
+    return A
+
+# Exemplo de uso
+P = 1000  # capital inicial
+r = 0.05  # taxa de juros anual (5%)
+n = 4     # juros compostos trimestralmente
+t = 5     # tempo em anos
+
+montante_final = compound_interest(P, r, n, t)
+print(f"Montante final após {t} anos: {montante_final:.2f}")
+
+#Biologia crescimento Logistico
+import numpy as np
+
+def logistic_growth_model(P0, K, r, T):
+    t = np.linspace(0, T, num=100)
+    P = K / (1 + (K - P0) / P0 * np.exp(-r * t))
+    return t, P
+
+# Exemplo de uso
+P0 = 10  # população inicial
+K = 100  # capacidade de carga
+r = 0.1  # taxa de crescimento
+T = 10   # tempo
+tempo, populacao = logistic_growth_model(P0, K, r, T)
+
+import matplotlib.pyplot as plt
+plt.plot(tempo, populacao)
+plt.title('Crescimento Logístico')
+plt.xlabel('Tempo')
+plt.ylabel('População')
+plt.grid()
+plt.show()
+Química: Lei da Velocidade de Reações Químicas
+def reaction_rate(A0, k, n, T):
+    dt = 0.1  # passo de tempo
+    time_points = []
+    concentrations = []
+    A = A0
+    
+    for t in np.arange(0, T, dt):
+        A -= k * (A ** n) * dt
+        time_points.append(t)
+        concentrations.append(A)
+    
+    return time_points, concentrations
+
+# Exemplo de uso
+A0 = 1.0  # concentração inicial
+k = 0.5   # constante de velocidade
+n = 1     # ordem da reação
+T = 10    # tempo
+tempo, concentracao = reaction_rate(A0, k, n, T)
+
+plt.plot(tempo, concentracao)
+plt.title('Decaimento da Concentração em Reação Química')
+plt.xlabel('Tempo')
+plt.ylabel('Concentração [A]')
+plt.grid()
+plt.show()
